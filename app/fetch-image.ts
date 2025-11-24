@@ -1,0 +1,16 @@
+"use server";
+
+type Image = {
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+};
+
+export async function fetchImage(): Promise<Image> {
+  // いったんcat
+  const res = await fetch("https://api.thecatapi.com/v1/images/search");
+  const images = await res.json();
+  console.log("fetchImage: 画像情報を取得しました", images);
+  return images[0];
+}
