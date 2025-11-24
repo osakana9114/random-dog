@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { fetchImage } from "./fetch-image";
+import styles from "./page.module.css";
 
 type DogImageProps = {
   url: string;
@@ -18,9 +19,13 @@ export function DogImage({ url }: DogImageProps) {
   };
 
   return (
-    <div>
-      <button onClick={refreshImage}>他のいぬも見る</button>
-      {imageUrl && <img src={imageUrl} alt="Dog" />}
+    <div className={styles.page}>
+      <button onClick={refreshImage} className={styles.button}>
+        ほかのいぬも見る
+      </button>
+      <div className={styles.frame}>
+        {imageUrl && <img src={imageUrl} className={styles.img} alt="Dog" />}
+      </div>
     </div>
   );
 }
